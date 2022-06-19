@@ -5,11 +5,14 @@ import com.synrgy.tourismapp.core.data.TourismRepository
 import com.synrgy.tourismapp.core.data.source.local.LocalDataSource
 import com.synrgy.tourismapp.core.data.source.local.room.TourismDatabase
 import com.synrgy.tourismapp.core.data.source.remote.RemoteDataSource
+import com.synrgy.tourismapp.core.domain.repository.ITourismRepository
+import com.synrgy.tourismapp.core.domain.usecase.TourismInteractor
+import com.synrgy.tourismapp.core.domain.usecase.TourismUseCase
 import com.synrgy.tourismapp.core.utils.AppExecutors
 import com.synrgy.tourismapp.core.utils.JsonHelper
 
 object Injection {
-    fun provideRepository(context: Context): TourismRepository {
+    fun provideRepository(context: Context): ITourismRepository {
         val database = TourismDatabase.getInstance(context)
 
         val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
@@ -17,5 +20,10 @@ object Injection {
         val appExecutors = AppExecutors()
 
         return TourismRepository.getInstance(remoteDataSource, localDataSource, appExecutors)
+    }
+
+    fun provideTourismUseCase(context: Context): TourismUseCase {
+        val repository = provideRepository(context)
+        return TourismInteractor(repository)
     }
 }

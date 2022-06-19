@@ -1,8 +1,9 @@
 package com.synrgy.tourismapp.favorite
 
 import androidx.lifecycle.ViewModel
-import com.synrgy.tourismapp.core.data.TourismRepository
+import com.synrgy.tourismapp.core.domain.usecase.TourismUseCase
 
-class FavoriteViewModel(tourismRepository: TourismRepository) : ViewModel() {
-    val favoriteTourism = tourismRepository.getFavoriteTourism()
+class FavoriteViewModel(tourismUseCase: TourismUseCase) : ViewModel() {
+    val favoriteTourism = tourismUseCase.getFavoriteTourism()
+
 }
