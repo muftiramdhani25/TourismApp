@@ -64,4 +64,11 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
     implementation "androidx.room:room-ktx:2.4.2"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+
+    implementation "com.google.dagger:dagger:2.29.1"
+    kapt "com.google.dagger:dagger-compiler:2.29.1"
+
+    //by viewModels di Activity dan Fragment
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 }
