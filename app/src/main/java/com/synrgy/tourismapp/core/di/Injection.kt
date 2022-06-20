@@ -5,6 +5,7 @@ import com.synrgy.tourismapp.core.data.TourismRepository
 import com.synrgy.tourismapp.core.data.source.local.LocalDataSource
 import com.synrgy.tourismapp.core.data.source.local.room.TourismDatabase
 import com.synrgy.tourismapp.core.data.source.remote.RemoteDataSource
+import com.synrgy.tourismapp.core.data.source.remote.network.ApiConfig
 import com.synrgy.tourismapp.core.domain.repository.ITourismRepository
 import com.synrgy.tourismapp.core.domain.usecase.TourismInteractor
 import com.synrgy.tourismapp.core.domain.usecase.TourismUseCase
@@ -15,7 +16,7 @@ object Injection {
     fun provideRepository(context: Context): ITourismRepository {
         val database = TourismDatabase.getInstance(context)
 
-        val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
+        val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.provideApiService())
         val localDataSource = LocalDataSource.getInstance(database.tourismDao())
         val appExecutors = AppExecutors()
 
