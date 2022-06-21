@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -65,8 +66,11 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
 
-    implementation "com.google.dagger:dagger:2.29.1"
-    kapt "com.google.dagger:dagger-compiler:2.29.1"
+//    implementation "com.google.dagger:dagger:2.29.1"
+//    kapt "com.google.dagger:dagger-compiler:2.29.1"
+
+    implementation "com.google.dagger:hilt-android:2.40.5"
+    kapt "com.google.dagger:hilt-android-compiler:2.40.5"
 
     //by viewModels di Activity dan Fragment
     implementation "androidx.activity:activity-ktx:1.4.0"
